@@ -1,11 +1,25 @@
 {
-  "name": "simple-list",
+  "name": "@yszk0123/simple-list",
   "version": "0.1.0",
-  "main": "index.js",
+  "keywords": [],
+  "description": "",
+  "main": "dist/simple-list.cjs.js",
+  "module": "dist/simple-list.es.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": "git@github.com:yszk0123/simple-list.git",
   "author": "Yuji Suzuki <y0suzuki0123@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "scripts": {
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch",
+    "prebuild": "rm -rf ./dist/",
+    "build": "rollup -c",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -14,6 +28,11 @@
     "@types/jest": "^24.0.11",
     "jest": "^24.7.1",
     "prettier": "^1.17.0",
+    "rollup": "^1.10.1",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.21.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
   },
