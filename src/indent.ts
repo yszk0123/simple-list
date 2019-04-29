@@ -6,14 +6,17 @@ import {
 } from './ItemFinder';
 import { updateRange } from './utils/Range';
 
+function canIndent(items: Item[], index: number): boolean {
+  const prev = getParentOrPrevSibling(items, index);
+  const current = items[index];
+
+  return prev !== null && current.level < prev.level + 1;
+}
+
 export function indent(items: Item[], index: number): Item[] {
   assert(index < items.length, 'out of range');
 
-  const prev = getParentOrPrevSibling(items, index);
-  if (prev === null) {
-    return items;
-  }
-  if (items[index].level - prev.level >= 1) {
+  if (!canIndent(items, index)) {
     return items;
   }
 
