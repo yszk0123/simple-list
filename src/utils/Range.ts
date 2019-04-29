@@ -3,6 +3,14 @@ export interface Range {
   to: number;
 }
 
+export function updateAt<T>(
+  values: T[],
+  index: number,
+  updater: (value: T, index: number) => T,
+): T[] {
+  return values.map((value, i) => (i === index ? updater(value, i) : value));
+}
+
 export function updateRange<T>(
   values: T[],
   range: Range,
