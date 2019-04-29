@@ -5,7 +5,7 @@ describe('indent', () => {
   test('empty', () => {
     const input: Item[] = [];
 
-    expect(indent(input, 0)).toEqual([]);
+    expect(() => indent(input, 0)).toThrow();
   });
 
   test('first line', () => {

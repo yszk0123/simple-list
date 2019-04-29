@@ -1,3 +1,4 @@
+import assert from 'assert';
 import { Item } from './Item';
 import {
   getParentOrPrevSibling,
@@ -6,9 +7,7 @@ import {
 import { updateRange } from './utils/Range';
 
 export function indent(items: Item[], index: number): Item[] {
-  if (index >= items.length) {
-    return items;
-  }
+  assert(index < items.length, 'out of range');
 
   const prev = getParentOrPrevSibling(items, index);
   if (prev === null) {
